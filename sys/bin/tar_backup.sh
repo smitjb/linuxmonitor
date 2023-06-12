@@ -22,7 +22,20 @@ case $BACKUP_TARGET in
          *)     DATA_EXCLUDE="--exclude=data --exclude=data2"
              ;;
 esac
-
+ERR_MSG=""
+if [ ! -d ${BACKUP_ROOT} ];then
+	ERR_MSG="Backup volume not mounted"
+fi
+if [ ! -d ${BACKUP_ROOT}/${BACKUP_TYPE} ];then
+	ERR_MSG="Backup directory absent"
+fi
+if [ ! -z "${ERR_MSG}" ];then
+	echo ${ERR_MSG} |
+	mail -s "${ERR_MSG} - ${BACKUP_ROOT}/${BACKUP_TYPE}" \
+		-r backups@aqulia-eth \
+		jim@ponder-stibbons.com
+	exit 1
+fi
 SYSEXCLUDES=" --exclude=/lost+found --exclude=${BACKUP_ROOT} ${DATA_EXCLUDE} --exclude=/mnt --exclude=/proc --exclude=/dev --exclude=/sys  --exclude=/shares --exclude=/run --exclude=/home "
 HOMEEXCLUDES=""
 CODEEXCLUDES=" --exclude=win1032b --exclude=win1032b.y"
@@ -51,3 +64,5 @@ if [ -d  ${BACKUP_ROOT}/${BACKUP_TYPE} ];then
 	echo After >>${LOGFILE}
 	ls -ltr >>${LOGFILE}
 fi
+exit 
+

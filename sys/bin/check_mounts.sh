@@ -7,7 +7,7 @@ LOGFILE=${LOGROOT}/check_mounts_${TIMESTAMP}.log
 MOUNTLIST=/jbs/sys/etc/mountlist
 
 #MOUNTS="/shares/data /shares/backup /shares/backup2 /shares/datum /shares/backup3"
-MOUNTS=$( cat ${MOUNTSLIST})
+MOUNTS=$( cat ${MOUNTLIST})
 
 echo "${TIMESTAMP}" >${LOGFILE}
 REPORT_NEEDED="N"

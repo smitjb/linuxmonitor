@@ -54,7 +54,7 @@ echo tar cvpzf ${BACKUP_FILE} ${EXCLUDES} ${BACKUP_TARGET} >>${LOGFILE}
 tar cvpzf ${BACKUP_FILE} ${EXCLUDES} ${BACKUP_TARGET} >>${LOGFILE}
 
 echo Housekeeping >>${LOGFILE}
-set -x
+
 if [ -d  ${BACKUP_ROOT}/${BACKUP_TYPE} ];then 
 	cd ${BACKUP_ROOT}/${BACKUP_TYPE}
         echo Before >>${LOGFILE}

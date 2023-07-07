@@ -1,6 +1,6 @@
 #/bin/bash
 #
-set -x
+
 BACKUP_TYPE=${1}
 BACKUP_TARGET="${2}"
 

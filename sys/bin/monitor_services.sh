@@ -8,24 +8,30 @@ LOGFILE=${LOGROOT}/monitor_services_${TIMESTAMP}.log
 
 this_dir=$(dirname ${0})
 
-echo "this_dir:[$this_dir]"
+#echo "this_dir:[$this_dir]"
 cfg_dir="$this_dir/../etc"
 
 cfg_file=$cfg_dir/monitor_services.ini
 
 REPORT_NEEDED="N"
-
+echo "Starting at ${TIMESTAMP}" >${LOGFILE}
 for host in $(cat ${cfg_file} | awk -F: '{ print $1 }')
 do
+	PING_REQUIRED=$(grep ${host} ${cfg_file} | awk -F: '{ print $2 }')
+#	echo "PING_REQUIRED:[$PING_REQUIRED]"
 	echo -n "$host ->" >>${LOGFILE}
 	ping -c 1 $host >/dev/null
 	if [ $? == 0 ];then
 		echo "  pingable" >>${LOGFILE}
 	else
-		echo "  not pingable" >>${LOGFILE}
-		REPORT_NEEDED="Y"
+		if [ ${PING_REQUIRED} == "Y" ];then
+			echo "  not pingable" >>${LOGFILE}
+			REPORT_NEEDED="Y"
+		else
+			echo "ping ignored" >>${LOGFILE}
+		fi
 	fi
-	for port in $(grep $host ${cfg_file}| awk -F: '{ print $2 }')
+	for port in $(grep $host ${cfg_file}| awk -F: '{ print $3 }')
 	do
 		nc -z  -4 ${host} ${port} #>/dev/null #2&>1
 		if [ $? == 0 ];then
@@ -42,5 +48,4 @@ if [ ${REPORT_NEEDED} == "Y" ];then
         cat ${LOGFILE}
 fi
 
-
-
+echo "Finishing at $( date +%Y%m%d_%H%M%S)" >>${LOGFILE}

@@ -45,7 +45,6 @@ done
 if [ ${REPORT_NEEDED} == "Y" ];then
          mail -s "Warning services missing" -r monitor@aquila-eth jim@ponder-stibbons.com <${LOGFILE}
 
-        cat ${LOGFILE}
 fi
 
 echo "Finishing at $( date +%Y%m%d_%H%M%S)" >>${LOGFILE}

@@ -3,10 +3,15 @@
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
 
-LOGROOT=/home/root/logs
-LOGFILE=${LOGROOT}/monitor_services_${TIMESTAMP}.log
 
 this_dir=$(dirname ${0})
+if [ ${this_dir} == "." ];then
+        this_dir=$(pwd)
+fi
+
+
+LOGROOT=${this_dir}/logs
+LOGFILE=${LOGROOT}/monitor_services_${TIMESTAMP}.log
 
 #echo "this_dir:[$this_dir]"
 cfg_dir="$this_dir/../etc"

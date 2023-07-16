@@ -1,6 +1,11 @@
 #/bin/bash
 #
 
+this_dir=$(dirname ${0})
+if [ ${this_dir} == "." ];then
+        this_dir=$(pwd)
+fi
+
 BACKUP_TYPE=${1}
 BACKUP_TARGET="${2}"
 
@@ -10,7 +15,8 @@ BACKUP_ROOT=/shares//backup2
 BACKUP_DIR=${BACKUP_ROOT}/${BACKUP_TYPE}
 
 FLAGFILE=${BACKUP_ROOT}/${BACKUP_TYPE}/backup_${TIMESTAMP}.log
-LOGROOT=/home/root/logs
+
+LOGROOT=${this_dir}/../logs
 LOGFILE=${LOGROOT}/${BACKUP_TYPE}_backup_${TIMESTAMP}.log
 
 case $BACKUP_TARGET in

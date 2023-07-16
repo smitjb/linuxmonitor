@@ -1,8 +1,13 @@
 #!/bin/bash
 
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+this_dir=$(dirname ${0})
+if [ ${this_dir} == "." ];then
+        this_dir=$(pwd)
+fi
 
-LOGROOT=/home/root/logs
+
+LOGROOT=${this_dir}/../logs
 LOGFILE=${LOGROOT}/check_mounts_${TIMESTAMP}.log
 MOUNTLIST=/jbs/sys/etc/mountlist
 

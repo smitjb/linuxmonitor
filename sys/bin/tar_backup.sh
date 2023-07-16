@@ -1,5 +1,9 @@
 #/bin/bash
 #
+this_dir=$(dirname ${0})
+if [ ${this_dir} == "." ];then
+        this_dir=$(pwd)
+fi
 
 BACKUP_TYPE=${1}
 BACKUP_TARGET=${2}
@@ -13,7 +17,7 @@ TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
 BACKUP_ROOT=/shares/backup
 BACKUP_FILE=${BACKUP_ROOT}/${BACKUP_TYPE}/${BACKUP_TYPE}_backup_${TIMESTAMP}.tgz
-LOGROOT=/home/root/logs
+LOGROOT=${this_dir}/../logs
 LOGFILE=${LOGROOT}/${BACKUP_TYPE}_backup_${TIMESTAMP}.log
 
 case $BACKUP_TARGET in

@@ -1,0 +1,14 @@
+select 'select count(*) from '||decode(owner,'PUBLIC','',owner||'.')||synonym_name||';'
+from dba_synonyms
+where ( owner,synonym_name ) in
+(select owner, object_name
+ from dba_objects
+ where object_type ='SYNONYM' AND status='INVALID'
+ and owner like upper('%&&1%'))
+ 
+spool invalid_synonyms_test.sql
+/
+spool off
+@invalid_synonyms_test
+@invalid_synonyms &&1
+

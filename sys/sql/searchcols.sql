@@ -1,0 +1,1 @@
+select * from dba_tab_columns where upper(column_name) like upper('%&1%');

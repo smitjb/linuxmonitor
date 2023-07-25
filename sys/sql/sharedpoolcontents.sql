@@ -1,0 +1,1 @@
+SELECT * FROM X$KSMLRU WHERE ksmlrsiz > 0;

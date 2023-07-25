@@ -1,0 +1,2 @@
+Sun 16 Jul 15:38:20 BST 2023
+cd /shares/data/video; find . |cpio -pdmv /shares//backup2/video

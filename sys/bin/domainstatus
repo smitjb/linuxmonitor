@@ -1,0 +1,3 @@
+whois -h whois.nic.uk. "ponder-stibbons.co.uk"
+whois -h whois.enom.com ponder-stibbons.com
+whois -h whois.melbourneit.com chrysaetos.com

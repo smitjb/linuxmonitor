@@ -1,0 +1,6 @@
+echo "Installed..."
+grep -v \# /var/opt/oracle/oratab
+echo "Running..."
+ps -ef | grep pmon|awk '{ print $9 }'|awk -F_ '{ print $3 }'
+echo "Current"
+echo "[${ORACLE_SID}]"

@@ -1,0 +1,19 @@
+ SELECT substr(a.DEDEL_PK,1,16) DEDEL_PK,
+        a.DEAL_REFERENCE,
+        scusr.username,
+        substr(a.OWNING_COMPANY_RDCMB_FK,1,16) OWNING_COMPANY_RDCMB_FK,
+        substr(a.TRADER_SCUSR_FK,1,16) TRADER_SCUSR_FK,
+        substr(a.COUNTERPARTY_RDCMB_FK,1,16) COUNTERPARTY_RDCMB_FK,
+        to_char(a.DEAL_DONE_DATE,'DD-MON-YY HH24:MI:SS') DEAL_DONE_DATE,
+        to_char(a.DEAL_ENTERED_DATE,'DD-MON-YY HH24:MI:SS') DEAL_ENTERED_DATE,
+        substr(a.DEAL_STATUS_RDCOD_FK,1,16) DEAL_STATUS_RDCOD_FK,
+        a.COUNTERPARTY_TRADER_NAME,
+        substr(a.LOCK_NUM,1,8) LOCK_NUM,
+        substr(a.LAST_UPDATE_USER,1,16) LAST_UPDATE_USER,
+        to_char(a.LAST_UPDATE_TIME,'DD-MON-YY HH24:MI:SS') LAST_UPDATE_TIME
+ FROM   dedel_deals a,
+        scusr_users scusr
+WHERE   a.LAST_UPDATE_USER = scusr.scusr_pk
+ORDER BY a.DEAL_ENTERED_DATE
+/
+

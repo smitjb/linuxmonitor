@@ -1,0 +1,51 @@
+--   select 'select substr('|| substr(table_name,1,5) || '_PK,1,16) ' ||
+--          ' from ' || table_name || ' where substr('|| substr(table_name,1,5) || '_PK,1,16) = ''1010002020000005'' order by '
+--          || substr(table_name,1,5) || '_PK ' || ';'
+--   from user_tables
+
+select substr(ADB_P_PK,1,16)  from ADB_PREREGLISTENER where substr(ADB_P_PK,1,16) = '1010002020000005' order by ADB_P_PK ;                            
+select substr(ADB_P_PK,1,16)  from ADB_PUBINFO where substr(ADB_P_PK,1,16) = '1010002020000005' order by ADB_P_PK ;                                   
+select substr(ADB_R_PK,1,16)  from ADB_RELINFO where substr(ADB_R_PK,1,16) = '1010002020000005' order by ADB_R_PK ;                                   
+select substr(ADB_R_PK,1,16)  from ADB_REQREPINFO where substr(ADB_R_PK,1,16) = '1010002020000005' order by ADB_R_PK ;                                
+select substr(ADB_S_PK,1,16)  from ADB_SUBINFO where substr(ADB_S_PK,1,16) = '1010002020000005' order by ADB_S_PK ;                                   
+select substr(ADB_T_PK,1,16)  from ADB_TABLEMAPPING where substr(ADB_T_PK,1,16) = '1010002020000005' order by ADB_T_PK ;                              
+select substr(DEBRK_PK,1,16)  from DEBRK_BROKERAGE where substr(DEBRK_PK,1,16) = '1010002020000005' order by DEBRK_PK ;                               
+select substr(DECHN_PK,1,16)  from DECHN_CHAIN_DETAILS where substr(DECHN_PK,1,16) = '1010002020000005' order by DECHN_PK ;                           
+select substr(DECON_PK,1,16)  from DECON_CONVERSION_BASIS where substr(DECON_PK,1,16) = '1010002020000005' order by DECON_PK ;                        
+select substr(DEDCH_PK,1,16)  from DEDCH_DERIVS_CHAIN where substr(DEDCH_PK,1,16) = '1010002020000005' order by DEDCH_PK ;                            
+select substr(DEDEL_PK,1,16)  from DEDEL_DEALS where substr(DEDEL_PK,1,16) = '1010002020000005' order by DEDEL_PK ;                                   
+select substr(DEDER_PK,1,16)  from DEDER_DERIVS_DEALS where substr(DEDER_PK,1,16) = '1010002020000005' order by DEDER_PK ;                            
+select substr(DEDNO_PK,1,16)  from DEDNO_DERIVS_NOTES where substr(DEDNO_PK,1,16) = '1010002020000005' order by DEDNO_PK ;                            
+select substr(DEEXU_PK,1,16)  from DEEXU_EXERCISABLE_UNITS where substr(DEEXU_PK,1,16) = '1010002020000005' order by DEEXU_PK ;                       
+select substr(DEFXD_PK,1,16)  from DEFXD_FIXED_DATES where substr(DEFXD_PK,1,16) = '1010002020000005' order by DEFXD_PK ;                             
+select substr(DEICE_PK,1,16)  from DEICE_ICE_DEALS where substr(DEICE_PK,1,16) = '1010002020000005' order by DEICE_PK ;                               
+select substr(DENTS_PK,1,16)  from DENTS_NOTE_SECTIONS where substr(DENTS_PK,1,16) = '1010002020000005' order by DENTS_PK ;                           
+select substr(DEOFS_PK,1,16)  from DEOFS_FIN_SWAP_SETTLES where substr(DEOFS_PK,1,16) = '1010002020000005' order by DEOFS_PK ;                        
+select substr(DEOPH_PK,1,16)  from DEOPH_PHYSICAL_SETTLES where substr(DEOPH_PK,1,16) = '1010002020000005' order by DEOPH_PK ;                        
+select substr(DEOPX_PK,1,16)  from DEOPX_OPT_EXPIRY_TERMS where substr(DEOPX_PK,1,16) = '1010002020000005' order by DEOPX_PK ;                        
+select substr(DEPFL_PK,1,16)  from DEPFL_FLOATING_PRICING where substr(DEPFL_PK,1,16) = '1010002020000005' order by DEPFL_PK ;                        
+select substr(DEPLI_PK,1,16)  from DEPLI_PRICING_LINES where substr(DEPLI_PK,1,16) = '1010002020000005' order by DEPLI_PK ;                           
+select substr(DEPLO_PK,1,16)  from DEPLOYMENT_LABEL where substr(DEPLO_PK,1,16) = '1010002020000005' order by DEPLO_PK ;                              
+select substr(DEPRC_PK,1,16)  from DEPRC_PRICING where substr(DEPRC_PK,1,16) = '1010002020000005' order by DEPRC_PK ;                                 
+select substr(DEPRF_PK,1,16)  from DEPRF_FIXED_PRICING where substr(DEPRF_PK,1,16) = '1010002020000005' order by DEPRF_PK ;                           
+select substr(DEPRT_PK,1,16)  from DEPRT_PRICING_TERM where substr(DEPRT_PK,1,16) = '1010002020000005' order by DEPRT_PK ;                            
+select substr(DESCO_PK,1,16)  from DESCO_SETTLEMENT_CONVS where substr(DESCO_PK,1,16) = '1010002020000005' order by DESCO_PK ;                        
+select substr(DESET_PK,1,16)  from DESET_SETTLEMENT_TERMS where substr(DESET_PK,1,16) = '1010002020000005' order by DESET_PK ;                        
+select substr(DESWS_PK,1,16)  from DESWS_SWAP_SETTLEMENTS where substr(DESWS_PK,1,16) = '1010002020000005' order by DESWS_PK ;                        
+select substr(DEUCH_PK,1,16)  from DEUCH_USER_CODE_HISTORY where substr(DEUCH_PK,1,16) = '1010002020000005' order by DEUCH_PK ;                       
+select substr(DEUCI_PK,1,16)  from DEUCI_USER_COMPANY_INSTS where substr(DEUCI_PK,1,16) = '1010002020000005' order by DEUCI_PK ;                      
+select substr(DEUCP_PK,1,16)  from DEUCP_USER_CHAIN_PREFIX where substr(DEUCP_PK,1,16) = '1010002020000005' order by DEUCP_PK ;                       
+select substr(DEUDP_PK,1,16)  from DEUDP_USER_DERIVS_PRODS where substr(DEUDP_PK,1,16) = '1010002020000005' order by DEUDP_PK ;                       
+select substr(DEUGR_PK,1,16)  from DEUGR_USER_GRADE where substr(DEUGR_PK,1,16) = '1010002020000005' order by DEUGR_PK ;                              
+select substr(DEULO_PK,1,16)  from DEULO_USER_LOCATION where substr(DEULO_PK,1,16) = '1010002020000005' order by DEULO_PK ;                           
+select substr(DEUSR_PK,1,16)  from DEUSR_USER_PREFERENCES where substr(DEUSR_PK,1,16) = '1010002020000005' order by DEUSR_PK ;                        
+select substr(DEUTS_PK,1,16)  from DEUTS_USER_TIME_SERIES where substr(DEUTS_PK,1,16) = '1010002020000005' order by DEUTS_PK ;                        
+select substr(NGAUF_PK,1,16)  from NGAUF_AUDIT_FIELD where substr(NGAUF_PK,1,16) = '1010002020000005' order by NGAUF_PK ;                             
+select substr(NGAUO_PK,1,16)  from NGAUO_AUDIT_OBJECT where substr(NGAUO_PK,1,16) = '1010002020000005' order by NGAUO_PK ;                            
+select substr(NGAUT_PK,1,16)  from NGAUT_AUDIT_TRANSACTION where substr(NGAUT_PK,1,16) = '1010002020000005' order by NGAUT_PK ;                       
+select substr(NGPRO_PK,1,16)  from NGPRO_PROCESSED_EVENTS where substr(NGPRO_PK,1,16) = '1010002020000005' order by NGPRO_PK ;                        
+select substr(NGPUB_PK,1,16)  from NGPUB_PUB_EVENTS where substr(NGPUB_PK,1,16) = '1010002020000005' order by NGPUB_PK ;                              
+select substr(NGPUB_PK,1,16)  from NGPUB_PUB_EVENTS_P where substr(NGPUB_PK,1,16) = '1010002020000005' order by NGPUB_PK ;                            
+select substr(NGSST_PK,1,16)  from NGSST_SUB_STATUS where substr(NGSST_PK,1,16) = '1010002020000005' order by NGSST_PK ;                              
+select substr(NGSUB_PK,1,16)  from NGSUB_SUB_EVENTS where substr(NGSUB_PK,1,16) = '1010002020000005' order by NGSUB_PK ;                              
+select substr(NGSUB_PK,1,16)  from NGSUB_SUB_EVENTS_S where substr(NGSUB_PK,1,16) = '1010002020000005' order by NGSUB_PK ;                            

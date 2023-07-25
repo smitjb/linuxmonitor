@@ -1,0 +1,6 @@
+--
+-- create a streams administrator user
+--
+-- Assumptions
+-- 1    User already exists and has storage quota (i.e. tablespace exists
+--      and user has quota)

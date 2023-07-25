@@ -1,0 +1,1 @@
+rman target / @d:\progs\utils\bin\oowbd1_backup.rman

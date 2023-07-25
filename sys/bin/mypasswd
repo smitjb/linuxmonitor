@@ -1,0 +1,7 @@
+echo "Enter oracle's password:"
+read n
+echo "New password:"
+read n
+echo "Re-enter new password:"
+read n
+echo "Password changed"

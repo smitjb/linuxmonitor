@@ -1,0 +1,2 @@
+cd ~jim/dev/utils
+find . |cpio -pdm /var/code/retrieve

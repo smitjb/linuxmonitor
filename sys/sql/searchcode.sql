@@ -1,0 +1,1 @@
+select * from dba_source where upper(text) like UPPER('%&1%');

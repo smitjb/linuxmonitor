@@ -1,0 +1,18 @@
+Starting at 20230716_152636
+win1032b ->ping ignored
+OK win1032b 25 open
+OK win1032b 143 open
+avocet2-fritz-box ->  pingable
+OK avocet2-fritz-box 22 open
+OK avocet2-fritz-box 25 open
+OK avocet2-fritz-box 110 open
+aquila-eth ->  pingable
+OK aquila-eth 22 open
+88.98.83.203 ->  pingable
+OK 88.98.83.203 22 open
+OK 88.98.83.203 143 open
+OK 88.98.83.203 3389 open
+gareloch ->  pingable
+OK gareloch 3389 open
+www.oracle.com ->  pingable
+Finishing at 20230716_152702

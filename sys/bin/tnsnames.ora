@@ -1,0 +1,39 @@
+
+prdlpri1 =
+  (DESCRIPTION =
+    (ADDRESS = 
+            (PROTOCOL = TCP)
+            (HOST = bp1xeuaa501)
+            (PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = prdlpri1.bp.com)
+    )
+  )
+
+
+oatlpri1 =
+  (DESCRIPTION =
+    (ADDRESS = 
+            (PROTOCOL = TCP)
+            (HOST = bp1xeuaa498)
+            (PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = oatlpri1.bp.com)
+    )
+  )
+
+# Doesn't exist yet
+
+#devlpri1 =
+#  (DESCRIPTION =
+#    (ADDRESS = 
+#            (PROTOCOL = TCP)
+#            (HOST = bp1xeuaa495)
+#            (PORT = 1521))
+#    (CONNECT_DATA =
+#      (SERVER = DEDICATED)
+#      (SERVICE_NAME = devlpri1.bp.com)
+#    )
+#  )

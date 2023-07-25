@@ -1,0 +1,1 @@
+select snap_id,BEGIN_INTERVAL_TIME,END_INTERVAL_TIME from dba_hist_snapshot;

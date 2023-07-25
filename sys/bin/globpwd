@@ -1,0 +1,1 @@
+ssh -l oracle reuxeuus224 PWD/globpwd $1 $2 $3

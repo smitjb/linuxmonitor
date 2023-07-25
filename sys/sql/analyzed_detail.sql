@@ -1,0 +1,1 @@
+select table_name, last_analyzed, num_rows from dba_tables where owner=upper('&1') ORDER by last_analyzed;

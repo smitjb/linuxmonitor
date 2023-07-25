@@ -1,0 +1,18 @@
+select GRANTEE         GRANTEE_DBA_ROLE_PRIVS,
+       GRANTED_ROLE
+from   dba_role_privs
+where  grantee NOT IN
+       ('AQ_ADMINISTRATOR_ROLE','CONNECT','DBA','DBSNMP','EXP_FULL_DATABASE',
+        'IMP_FULL_DATABASE','OPS$ORACLE','RECOVERY_CATALOG_OWNER','RESOURCE',
+        'SNMPAGENT','SQLNAV','SYS','SYSTEM','ORDPLUGINS','ORDSYS','OUTL',
+        'SELECT_CATALOG_ROLE','EXECUTE_CATALOG_ROLE','OUTLN','REPADMIN')
+order by 1,2
+/
+
+SELECT GRANTEE      grantee_DBA_SYS_PRIVS,
+       PRIVILEGE
+FROM   dba_sys_privs
+WHERE  GRANTEE IN (SELECT username 
+                   FROM   all_users
+                   WHERE  username NOT IN ('MDSYS','ORDPLUGINS','ORDSYS ','SYS','SYSTEM','REPADMIN','ORDSYS','TRACESVR'))
+ORDER BY 1,2;

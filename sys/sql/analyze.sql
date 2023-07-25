@@ -1,0 +1,19 @@
+SET HEADING  OFF
+SET LINESIZE 120
+SET FEEDBACK OFF
+SET PAGES    0
+
+SPOOL run_analyze.sql
+
+SELECT 'ANALYZE TABLE '|| owner || '.' || table_name ||' ESTIMATE STATISTICS SAMPLE 10 PERCENT;'
+FROM   all_tables
+WHERE  owner NOT IN ('SYS','SYSTEM')
+ORDER BY owner, table_name;
+
+SPOOL OFF
+
+
+SET HEADING  ON
+SET FEEDBACK ON
+
+PROMPT Now run @run_analyze.sql

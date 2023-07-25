@@ -1,0 +1,7 @@
+SELECT * 
+  FROM dba_SYS_privs DSP,
+  (
+  SELECT LEVEL,GRANTED_ROLE
+  FROM dba_role_privs CONNECT BY PRIOR GRANTED_ROLE= grantee
+  START WITH GRANTEE='UTL_DBA')
+  WHERE GRANTEE = granted_role;

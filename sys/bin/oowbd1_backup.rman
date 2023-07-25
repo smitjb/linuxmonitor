@@ -1,0 +1,4 @@
+backup format 'L:\backups\OOWBD1\%U' as compressed backupset database;
+backup format 'L:\backups\OOWBD1\%U' as compressed backupset archivelog all delete input;
+delete noprompt obsolete;
+exit

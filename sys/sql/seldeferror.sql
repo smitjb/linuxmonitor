@@ -1,0 +1,12 @@
+SELECT substr(DEFERRED_TRAN_ID,1,15) DEFERRED_TRAN_ID,
+       substr(ORIGIN_TRAN_DB,1,15) ORIGIN_TRAN_DB,
+       substr(ORIGIN_TRAN_ID,1,15) ORIGIN_TRAN_ID,
+       CALLNO,
+       substr(DESTINATION,1,20) DESTINATION,
+       to_char(START_TIME,'DD-MON-YYYY HH24:MI:SS') START_TIME,
+       ERROR_NUMBER,
+       substr(ERROR_MSG,1,30) ERROR_MSG,
+       substr(RECEIVER,1,12) RECEIVER
+FROM   deferror
+order by START_TIME
+/

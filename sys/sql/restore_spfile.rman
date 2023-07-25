@@ -1,0 +1,4 @@
+run 
+{
+	restore spfile from autobackup;
+}

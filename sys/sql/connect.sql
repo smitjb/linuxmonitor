@@ -1,0 +1,32 @@
+--
+-- $Header: /jbs/var/cvs/orascripts/sql/connect.sql,v 1.1 2013/01/02 14:16:17 jim Exp $
+--
+-- This script connects to the database and runs the login script. 
+--
+-- Login.sql runs when you first connect in sqlplus but not if you later 
+-- use a connect command (eg connect x/y@otherDB) to change user or database.
+-- This leaves your sqlprompt unchanged and misleading.
+--
+-- If you do @connect  x/y@otherDB instead this ensures that login.sql is 
+-- run.
+--
+-- This script needs to be on SQLPATH
+--
+-- This may be obsolete in Oracle 10.
+--
+-- $Log: connect.sql,v $
+-- Revision 1.1  2013/01/02 14:16:17  jim
+-- Migrated from utils
+--
+-- Revision 1.1.1.1  2005/11/27 10:10:20  jim
+-- Migrated from client sight
+--
+-- Revision 1.1  2005/09/30 10:50:34  jim.smith
+-- First checkin from active files
+--
+--
+--
+-- =======================================================================
+
+connect &1
+@login

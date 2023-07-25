@@ -1,0 +1,2 @@
+select 'create tablespace '||tablespace_name||' extent management local segment space management auto datafile ''D:\ORACLE\ORADATA\DWPIASUK\'||TABLESPACE_NAME||'_01.DBF'' size 100m autoextend on;' 
+from dba_tablespaces dt;

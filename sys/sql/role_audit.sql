@@ -1,0 +1,11 @@
+SELECT USERNAME,
+  PRIVILEGE
+FROM dba_users D,
+  dba_SYS_privs DSP
+WHERE GRANTEE IN
+  (SELECT GRANTED_ROLE
+  FROM dba_role_privs CONNECT BY PRIOR GRANTED_ROLE= grantee START
+  WITH GRANTEE                                     =USERNAME
+  )
+  AND PRIVILEGE LIKE '%ANY%'
+  AND USERNAME NOT IN ( 'SYS', 'SYSTEM', 'SYSMAN', 'ORACLE', 'UTL_DBA' ) ;

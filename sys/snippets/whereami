@@ -1,0 +1,20 @@
+
+#
+#  incorporate this at the top of any shell scripts to provide definitions
+# for various directories relative to the current directory or the directory
+# the main script is run from
+THISDIR=$( dirname ${0})
+if [ "${DIRNAME}" == "." ];then
+	THISDIR=$(pwd)
+fi
+
+BINDIR=${THISDIR}/../bin
+LOGDIR=${THISDIR}/../logs
+LOGROOT=${THISDIR}/../logs
+CFGDIR=${THISDIR}/../etc
+SQLDIR=${THISDIR}/../sql
+
+#
+# TODO
+#
+# How does this cope when the script is run with "script" and is found using a search path.

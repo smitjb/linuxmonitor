@@ -2,6 +2,6 @@
 #cd /jbs/opt/james/apps/james/logs
 #find . -name '*.log' -mtime +2 
 #find . -name '*.log' -mtime +2 -exec gzip {} \;
-cd /root/logs
+cd /jbs/sys/bin/logs
 find . -name '*.log' -mtime +2 
 find . -name '*.log' -mtime +7 -exec gzip {} \;

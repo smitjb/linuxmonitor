@@ -28,7 +28,9 @@ done
 
 echo "${TIMESTAMP}" >>${LOGFILE}
 if [ ${REPORT_NEEDED} == "Y" ];then
-         mail -s "Warning mounts missing" -r monitor@aquila-eth jim@ponder-stibbons.com <${LOGFILE}
+         #mail -s "Warning mounts missing" -r monitor@aquila-eth jim@ponder-stibbons.com <${LOGFILE}
+	 /jbs/sys/bin/smtpsender.sh smitjb0809+monitor@gmail.com  "Warning mounts missing"   "$( cat ${LOGFILE} )"
+
 
         cat ${LOGFILE}
 fi

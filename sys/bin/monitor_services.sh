@@ -48,7 +48,8 @@ do
 	done
 done
 if [ ${REPORT_NEEDED} == "Y" ];then
-         mail -s "Warning services missing" -r monitor@aquila-eth jim@ponder-stibbons.com <${LOGFILE}
+	/jbs/sys/bin/smtpsender.sh smitjb0809+monitor@gmail.com  "Warning services missing"   "$( cat ${LOGFILE} )"
+         #mail -s "Warning services missing" -r monitor@aquila-eth jim@ponder-stibbons.com <${LOGFILE}
 
 fi
 

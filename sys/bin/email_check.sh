@@ -22,7 +22,9 @@ REPORT_NEEDED="Y"
 echo "Starting at ${TIMESTAMP}" >${LOGFILE}
 echo "Finishing at $( date +%Y%m%d_%H%M%S)" >>${LOGFILE}
 if [ ${REPORT_NEEDED} == "Y" ];then
-         mail -s "Email check" -r monitor@ponder-stibbons.com -c smitjb0809@gmail.com jim@ponder-stibbons.com <${LOGFILE}
+#         mail -s "Email check" -r monitor@ponder-stibbons.com -c smitjb0809@gmail.com jim@ponder-stibbons.com <${LOGFILE}
+set -x
+       bash -x /jbs/sys/bin/smtpsender.sh smitjb0809+monitor@gmail.com  "email check"   "$( cat ${LOGFILE} )"
 
 fi
 

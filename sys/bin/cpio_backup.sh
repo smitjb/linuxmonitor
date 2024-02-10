@@ -36,11 +36,13 @@ if [ ! -d ${BACKUP_ROOT}/${BACKUP_TYPE} ];then
 fi
 if [ ! -z "${ERR_MSG}" ];then
          echo "${ERR_MSG} - ${BACKUP_ROOT}/${BACKUP_TYPE}" >>${LOGFILE}
-        echo ${ERR_MSG} |
-        mail -s "${ERR_MSG} - ${BACKUP_ROOT}/${BACKUP_TYPE}" \
-                -r backups@aqulia-eth \
-                jim@ponder-stibbons.com
-        exit 1
+        #echo ${ERR_MSG} |
+        #mail -s "${ERR_MSG} - ${BACKUP_ROOT}/${BACKUP_TYPE}" \
+        #        -r backups@aqulia-eth \
+        # jim@ponder-stibbons.com 
+	/jbs/sys/bin/smtpsender.sh smitjb0809+monitor@gmail.com  "${ERR_MSG} - ${BACKUP_ROOT}/${BACKUP_TYPE}"   "${ERR_MSG} - ${BACKUP_ROOT}/${BACKUP_TYPE}"
+
+	exit 1
 fi
 
 

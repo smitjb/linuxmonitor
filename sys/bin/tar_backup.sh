@@ -34,10 +34,12 @@ if [ ! -d ${BACKUP_ROOT}/${BACKUP_TYPE} ];then
 	ERR_MSG="Backup directory absent"
 fi
 if [ ! -z "${ERR_MSG}" ];then
-	echo ${ERR_MSG} |
-	mail -s "${ERR_MSG} - ${BACKUP_ROOT}/${BACKUP_TYPE}" \
-		-r backups@aqulia-eth \
-		jim@ponder-stibbons.com
+	# echo ${ERR_MSG} |
+	#mail -s "${ERR_MSG} - ${BACKUP_ROOT}/${BACKUP_TYPE}" \
+	#	-r backups@aqulia-eth \
+	#	jim@ponder-stibbons.com
+        /jbs/sys/bin/smtpsender.sh smitjb0809+monitor@gmail.com  "${ERR_MSG}- ${BACKUP_ROOT}/${BACKUP_TYPE}"   "${ERR_MSG}- ${BACKUP_ROOT}/${BACKUP_TYPE}"
+
 	exit 1
 fi
 SYSEXCLUDES=" --exclude=/lost+found --exclude=${BACKUP_ROOT} ${DATA_EXCLUDE} --exclude=/mnt --exclude=/proc --exclude=/dev --exclude=/sys  --exclude=/shares --exclude=/run --exclude=/home "

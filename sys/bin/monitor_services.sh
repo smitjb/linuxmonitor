@@ -10,7 +10,7 @@ if [ ${this_dir} == "." ];then
 fi
 
 
-LOGROOT=${this_dir}/logs
+LOGROOT=${this_dir}/../logs
 LOGFILE=${LOGROOT}/monitor_services_${TIMESTAMP}.log
 
 #echo "this_dir:[$this_dir]"

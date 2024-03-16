@@ -12,7 +12,7 @@ if [ ${this_dir} == "." ];then
         this_dir=$(pwd)
 fi
 
-
+MAIL_ADDRESSES="jim@ponder-stibbons.co.uk jim@ponder-stibbons.com smitjb0809+monitor@gmail.com random@ponder-stibbons.com"
 #echo "this_dir:[$this_dir]"
 cfg_dir="$this_dir/../etc"
 
@@ -20,11 +20,14 @@ cfg_file=$cfg_dir/monitor_services.ini
 
 REPORT_NEEDED="Y"
 echo "Starting at ${TIMESTAMP}" >${LOGFILE}
-echo "Finishing at $( date +%Y%m%d_%H%M%S)" >>${LOGFILE}
 if [ ${REPORT_NEEDED} == "Y" ];then
 #         mail -s "Email check" -r monitor@ponder-stibbons.com -c smitjb0809@gmail.com jim@ponder-stibbons.com <${LOGFILE}
-set -x
-       bash -x /jbs/sys/bin/smtpsender.sh smitjb0809+monitor@gmail.com  "email check"   "$( cat ${LOGFILE} )"
+       for mailaddress in ${MAIL_ADDRESSES}
+      	 do
+       		echo ${mailaddress}
+       		bash -x /jbs/sys/bin/smtpsender.sh smitjb0809+monitor@gmail.com  "email check"   "$( cat ${LOGFILE} )"
+	done
 
 fi
 
+echo "Finishing at $( date +%Y%m%d_%H%M%S)" >>${LOGFILE}

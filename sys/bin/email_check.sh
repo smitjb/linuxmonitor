@@ -25,7 +25,7 @@ if [ ${REPORT_NEEDED} == "Y" ];then
        for mailaddress in ${MAIL_ADDRESSES}
       	 do
        		echo ${mailaddress}
-       		bash -x /jbs/sys/bin/smtpsender.sh smitjb0809+monitor@gmail.com  "email check"   "$( cat ${LOGFILE} )"
+       		bash  /jbs/sys/bin/smtpsender.sh ${mailaddress}  "email check ${TIMESTAMP}"   "$( cat ${LOGFILE} )"
 	done
 
 fi

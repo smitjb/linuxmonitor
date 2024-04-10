@@ -12,11 +12,19 @@ if [ ${this_dir} == "." ];then
         this_dir=$(pwd)
 fi
 
-MAIL_ADDRESSES="jim@ponder-stibbons.co.uk jim@ponder-stibbons.com smitjb0809+monitor@gmail.com random@ponder-stibbons.com chrys@ponder-stibbons.com"
+
 #echo "this_dir:[$this_dir]"
 cfg_dir="$this_dir/../etc"
 
 cfg_file=$cfg_dir/monitor_services.ini
+address_file=${cfg_dir}/email_check.ini
+
+if [ -f ${address_file} "]lthen
+	MAIL_ADDRESSES=$(cat $address_file)
+else
+MAIL_ADDRESSES="jim@ponder-stibbons.co.uk jim@ponder-stibbons.com smitjb0809+monitor@gmail.com random@ponder-stibbons.com chrys@ponder-stibbons.com"
+
+fi
 
 REPORT_NEEDED="Y"
 echo "Starting at ${TIMESTAMP}" >${LOGFILE}

@@ -12,7 +12,7 @@ if [ ${this_dir} == "." ];then
         this_dir=$(pwd)
 fi
 
-MAIL_ADDRESSES="jim@ponder-stibbons.co.uk jim@ponder-stibbons.com smitjb0809+monitor@gmail.com random@ponder-stibbons.com"
+MAIL_ADDRESSES="jim@ponder-stibbons.co.uk jim@ponder-stibbons.com smitjb0809+monitor@gmail.com random@ponder-stibbons.com chrys@ponder-stibbons.com"
 #echo "this_dir:[$this_dir]"
 cfg_dir="$this_dir/../etc"
 

@@ -19,10 +19,10 @@ cfg_dir="$this_dir/../etc"
 cfg_file=$cfg_dir/monitor_services.ini
 address_file=${cfg_dir}/email_check.ini
 
-if [ -f ${address_file} "]lthen
+if [ -f ${address_file} ];then
 	MAIL_ADDRESSES=$(cat $address_file)
 else
-MAIL_ADDRESSES="jim@ponder-stibbons.co.uk jim@ponder-stibbons.com smitjb0809+monitor@gmail.com random@ponder-stibbons.com chrys@ponder-stibbons.com"
+	MAIL_ADDRESSES="jim@ponder-stibbons.co.uk jim@ponder-stibbons.com smitjb0809+monitor@gmail.com random@ponder-stibbons.com chrys@ponder-stibbons.com"
 
 fi
 

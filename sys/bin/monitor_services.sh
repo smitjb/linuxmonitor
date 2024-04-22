@@ -22,11 +22,16 @@ REPORT_NEEDED="N"
 echo "Starting at ${TIMESTAMP}" >${LOGFILE}
 for host in $(cat ${cfg_file} | awk -F: '{ print $1 }')
 do
+	# 
+	# host detection section 
+	#
+	# use nmap -sn host
 	PING_REQUIRED=$(grep ${host} ${cfg_file} | awk -F: '{ print $2 }')
 #	echo "PING_REQUIRED:[$PING_REQUIRED]"
 	echo -n "$host ->" >>${LOGFILE}
-	ping -c 1 $host >/dev/null
-	if [ $? == 0 ];then
+	PINGRESULT=$(nmap -sn  -Pn ${host} |grep "^Host is" | awk '{ print $3 }')
+
+	if [ "${PINGRESULT}" == "up." ];then
 		echo "  pingable" >>${LOGFILE}
 	else
 		if [ ${PING_REQUIRED} == "Y" ];then
@@ -36,10 +41,15 @@ do
 			echo "ping ignored" >>${LOGFILE}
 		fi
 	fi
+	# 
+	# port scan section
+	# 
+	# use nmap -p port host 
 	for port in $(grep $host ${cfg_file}| awk -F: '{ print $3 }')
 	do
-		nc -z  -4 ${host} ${port} #>/dev/null #2&>1
-		if [ $? == 0 ];then
+#		nc -z  -4 ${host} ${port} #>/dev/null #2&>1
+		PORTRESULT=$(nmap -p ${port} -Pn ${host} | grep "^${port}" |awk '{ print $2 }')
+		if [ ${PORTRESULT} == "open" ];then
 			echo OK ${host} ${port} open >>${LOGFILE}
 		else
 			echo FAIL ${host} ${port} not open >>${LOGFILE}
@@ -48,7 +58,8 @@ do
 	done
 done
 if [ ${REPORT_NEEDED} == "Y" ];then
-	/jbs/sys/bin/smtpsender.sh smitjb0809+monitor@gmail.com  "Warning services missing"   "$( cat ${LOGFILE} )"
+	cat ${LOGFILE}
+#	/jbs/sys/bin/smtpsender.sh smitjb0809+monitor@gmail.com  "Warning services missing"   "$( cat ${LOGFILE} )"
          #mail -s "Warning services missing" -r monitor@aquila-eth jim@ponder-stibbons.com <${LOGFILE}
 
 fi

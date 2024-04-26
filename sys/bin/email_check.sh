@@ -1,6 +1,8 @@
 #!/bin/bash
 
 this_dir=$(dirname ${0})
+PARAM=${1}
+
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
 
@@ -17,7 +19,12 @@ fi
 cfg_dir="$this_dir/../etc"
 
 cfg_file=$cfg_dir/monitor_services.ini
-address_file=${cfg_dir}/email_check.ini
+if [ -z "${PARAM}" ; then
+	address_file=${cfg_dir}/email_check.ini
+else 
+	address_file=${cfg_dir}/${PARAM}
+fi
+
 
 if [ -f ${address_file} ];then
 	MAIL_ADDRESSES=$(cat $address_file)

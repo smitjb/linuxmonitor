@@ -19,7 +19,7 @@ fi
 cfg_dir="$this_dir/../etc"
 
 cfg_file=$cfg_dir/monitor_services.ini
-if [ -z "${PARAM}" ; then
+if [ -z "${PARAM}" ] ; then
 	address_file=${cfg_dir}/email_check.ini
 else 
 	address_file=${cfg_dir}/${PARAM}

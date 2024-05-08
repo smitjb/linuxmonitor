@@ -15,7 +15,7 @@ MOUNTLIST=/jbs/sys/etc/mountlist
 MOUNTS=$( cat ${MOUNTLIST})
 
 echo "${TIMESTAMP}" >${LOGFILE}
-REPORT_NEEDED="N"
+REPORT_NEEDED="Y"
 for mnt in ${MOUNTS}
 do
 	mounted=$(df |egrep " ${mnt}\$")
@@ -23,15 +23,18 @@ do
 	if [ -z "$mounted" ];then
 		echo "${mnt} not mounted" >>${LOGFILE} 
 		REPORT_NEEDED="Y"
+	else
+		echo "${mnt} OK" >>${LOGFILE}
 	fi
 done
 
 echo "${TIMESTAMP}" >>${LOGFILE}
 if [ ${REPORT_NEEDED} == "Y" ];then
          #mail -s "Warning mounts missing" -r monitor@aquila-eth jim@ponder-stibbons.com <${LOGFILE}
-	 /jbs/sys/bin/smtpsender.sh smitjb0809+monitor@gmail.com  "Warning mounts missing"   "$( cat ${LOGFILE} )"
+	 #/jbs/sys/bin/smtpsender.sh smitjb0809+monitor@gmail.com  "Warning mounts missing"   "$( cat ${LOGFILE} )"
+	 /jbs/sys/bin/smtpsender.sh chrys5@ponder-stibbons.com  "Warning mounts missing"   "$( cat ${LOGFILE} )"
 
-
-        cat ${LOGFILE}
+#	cat "${LOGFILE}" | mail -s"Warning mounts missing" -r chrys5@ponder-stibbons.com smitjb0809+monitor@gmail.com
+	cat ${LOGFILE}
 fi
 

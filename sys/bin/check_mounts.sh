@@ -35,6 +35,6 @@ if [ ${REPORT_NEEDED} == "Y" ];then
 	 /jbs/sys/bin/smtpsender.sh chrys5@ponder-stibbons.com  "Warning mounts missing"   "$( cat ${LOGFILE} )"
 
 #	cat "${LOGFILE}" | mail -s"Warning mounts missing" -r chrys5@ponder-stibbons.com smitjb0809+monitor@gmail.com
-	cat ${LOGFILE}
+	#cat ${LOGFILE}
 fi
 

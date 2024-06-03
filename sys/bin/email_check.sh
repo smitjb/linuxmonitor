@@ -1,5 +1,18 @@
 #!/bin/bash
 
+function do_process_control {
+        if [ ! -f ${cfg_dir}/process_control.ini ];then
+                echo "YES"
+                return
+        fi
+        GONOGO=$(grep "^${PROCESS_NAME}" ${cfg_dir}/process_control.ini | awk -F: '{ print $2 }' )
+        echo ${GONOGO}
+
+
+
+}
+
+
 this_dir=$(dirname ${0})
 PARAM=${1}
 
@@ -19,6 +32,17 @@ fi
 cfg_dir="$this_dir/../etc"
 
 cfg_file=$cfg_dir/monitor_services.ini
+PROCESS_NAME=EMAIL_CHECK
+
+GO=$(do_process_control)
+if [ "${GO}" = "NO" ];then
+        echo "Aborting because of process control (${GO})" >>${LOGFILE}
+
+        exit
+else
+        echo "Process control is (${GO})" >>${LOGFILE}
+fi
+
 if [ -z "${PARAM}" ] ; then
 	address_file=${cfg_dir}/email_check.ini
 else 

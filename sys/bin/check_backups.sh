@@ -1,5 +1,17 @@
 #!/bin/bash
 
+function do_process_control {
+	if [ ! -f ${CFGDIR}/process_control.ini ];then
+		echo "YES"
+		return
+	fi
+	GONOGO=$(grep "^${PROCESS_NAME}" ${CFGDIR}/process_control.ini | awk -F: '{ print $2 }' )
+        echo ${GONOGO}
+
+
+
+}
+
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
 
@@ -10,10 +22,24 @@ if [ ${this_dir} == "." ];then
 fi	
 
 BACKUP_ROOT=/shares/backup
+CFGDIR=${this_dir}/../etc
+
 TYPES="jbsbackups sysbackups homebackups codebackups"
 
 LOGROOT=${this_dir}/../logs
 LOGFILE=${LOGROOT}/check_backups_${TIMESTAMP}.log
+
+PROCESS_NAME=CHECK_BACKUPS
+
+GO=$(do_process_control)
+if [ "${GO}" = "NO" ];then
+	echo "Aborting because of process control (${GO})" >>${LOGFILE}
+
+	exit 
+else
+	echo "Process control is (${GO})" >>${LOGFILE}
+fi
+
 
 
 REPORT_NEEDED="N"

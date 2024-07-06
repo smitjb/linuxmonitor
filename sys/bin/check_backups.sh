@@ -24,7 +24,7 @@ fi
 BACKUP_ROOT=/shares/backup
 CFGDIR=${this_dir}/../etc
 
-TYPES="jbsbackups sysbackups homebackups codebackups"
+TYPES="jbsbackups sysbackups homebackups codebackups james3"
 
 LOGROOT=${this_dir}/../logs
 LOGFILE=${LOGROOT}/check_backups_${TIMESTAMP}.log
@@ -60,7 +60,6 @@ do
 	popd
 done
 if [ ${REPORT_NEEDED} == "Y" ];then
-	 #mail -s "Warning backups missing" -r monitor@aquila-eth jim@ponder-stibbons.com <${LOGFILE}
        /jbs/sys/bin/smtpsender.sh smitjb0809+monitor@gmail.com  "Warning backups missing"   "$( cat ${LOGFILE} )"
 
 	cat ${LOGFILE}

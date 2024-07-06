@@ -1,7 +1,54 @@
 #!/bin/bash
-#cd /jbs/opt/james/apps/james/logs
+
+THISDIR=$( dirname ${0})
+if [ "${DIRNAME}" == "." ];then
+	THISDIR=$(pwd)
+fi
+
+BINDIR=${THISDIR}/../bin
+LOGDIR=${THISDIR}/../logs
+LOGROOT=${THISDIR}/../logs
+CFGDIR=${THISDIR}/../etc
+SQLDIR=${THISDIR}/../sql
+
+CFGFILE=${CFGDIR}/ziplogs.ini
+#
+#
+# CFGFILE Format
+# directory  filenames age cmd
+#
+# e.g.
+#  /jbs/sys/bin/logs  '*.log' +7 gzip
+#
+#
+
+while read LINE
+do
+	set ${LINE}
+	directory=${1}
+	filenames="'"${2}"'"
+	age=${3}
+	cmd=${4}
+
+
+	echo ${directory} 
+	echo ${filenames}
+	if [ -d ${directory}  ];then
+	 echo filenames ${filenames} age ${age} cmd ${cmd}
+		echo "..exists"
+		cd ${directory}
+		#cmdline="find . -name '*.log' -mtime ${age} -exec ls -l {} \;"
+		set -x
+		find . -name  "\\"${filenames} -mtime ${age} -exec ls -l {} \;
+		
+	else
+		echo "..does not exist"
+	fi
+
+done <${CFGFILE}
+
+
+#cd /jbs/sys/bin/logs
 #find . -name '*.log' -mtime +2 
-#find . -name '*.log' -mtime +2 -exec gzip {} \;
-cd /jbs/sys/bin/logs
-find . -name '*.log' -mtime +2 
-find . -name '*.log' -mtime +7 -exec gzip {} \;
+#find . -name '*.log' -mtime +7 -exec gzip {} \;
+

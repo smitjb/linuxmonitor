@@ -1,6 +1,21 @@
 #!/bin/bash
 
+function do_process_control {
+        if [ ! -f ${cfg_dir}/process_control.ini ];then
+                echo "YES"
+                return
+        fi
+        GONOGO=$(grep "^${PROCESS_NAME}" ${cfg_dir}/process_control.ini | awk -F: '{ print $2 }' )
+        echo ${GONOGO}
+
+
+
+}
+
+
 this_dir=$(dirname ${0})
+PARAM=${1}
+
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
 
@@ -17,12 +32,41 @@ fi
 cfg_dir="$this_dir/../etc"
 
 cfg_file=$cfg_dir/monitor_services.ini
+PROCESS_NAME=EMAIL_CHECK
 
-REPORT_NEEDED="Y"
-echo "Starting at ${TIMESTAMP}" >${LOGFILE}
-echo "Finishing at $( date +%Y%m%d_%H%M%S)" >>${LOGFILE}
-if [ ${REPORT_NEEDED} == "Y" ];then
-         mail -s "Email check" -r monitor@ponder-stibbons.com -c smitjb0809@gmail.com jim@ponder-stibbons.com <${LOGFILE}
+GO=$(do_process_control)
+if [ "${GO}" = "NO" ];then
+        echo "Aborting because of process control (${GO})" >>${LOGFILE}
+
+        exit
+else
+        echo "Process control is (${GO})" >>${LOGFILE}
+fi
+
+if [ -z "${PARAM}" ] ; then
+	address_file=${cfg_dir}/email_check.ini
+else 
+	address_file=${cfg_dir}/${PARAM}
+fi
+
+
+if [ -f ${address_file} ];then
+	MAIL_ADDRESSES=$(cat $address_file)
+else
+	MAIL_ADDRESSES="jim@ponder-stibbons.co.uk jim@ponder-stibbons.com smitjb0809+monitor@gmail.com random@ponder-stibbons.com chrys@ponder-stibbons.com"
 
 fi
 
+REPORT_NEEDED="Y"
+echo "Starting at ${TIMESTAMP}" >${LOGFILE}
+if [ ${REPORT_NEEDED} == "Y" ];then
+#         mail -s "Email check" -r monitor@ponder-stibbons.com -c smitjb0809@gmail.com jim@ponder-stibbons.com <${LOGFILE}
+       for mailaddress in ${MAIL_ADDRESSES}
+      	 do
+       		echo ${mailaddress} >>${LOGFILE}
+       		bash  /jbs/sys/bin/smtpsender.sh ${mailaddress}  "email check ${TIMESTAMP}"   "$( cat ${LOGFILE} )"
+	done
+
+fi
+
+echo "Finishing at $( date +%Y%m%d_%H%M%S)" >>${LOGFILE}

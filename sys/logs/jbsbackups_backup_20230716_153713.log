@@ -1,8 +1,0 @@
-tar cvpzf /shares/backup/jbsbackups/jbsbackups_backup_20230716_153713.tgz /jbs
-/jbs/
-/jbs/opt/
-/jbs/sus/
-/jbs/sus/bin/
-/jbs/sus/bin/backup.bat
-/jbs/sus/bin/ADExplorer.exe
-Housekeeping
